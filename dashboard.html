@@ -28,8 +28,6 @@
       display: flex;
       flex-direction: column;
     }
-
-    /* ── NAV ── */
     nav {
       display: flex;
       align-items: center;
@@ -86,8 +84,6 @@
       transition: color 0.2s, border-color 0.2s;
     }
     .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-
-    /* ── MAIN ── */
     main {
       flex: 1;
       display: flex;
@@ -96,7 +92,6 @@
       padding: 48px 24px;
       position: relative;
     }
-    /* background dot glow */
     main::before {
       content: '';
       position: absolute;
@@ -106,7 +101,6 @@
       background: radial-gradient(ellipse, rgba(140,185,255,0.05) 0%, transparent 70%);
       pointer-events: none;
     }
-
     .submit-card {
       position: relative;
       width: 100%;
@@ -117,10 +111,7 @@
       padding: 40px;
       backdrop-filter: blur(8px);
     }
-
-    .card-header {
-      margin-bottom: 28px;
-    }
+    .card-header { margin-bottom: 28px; }
     .card-header h1 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 32px;
@@ -129,11 +120,14 @@
       line-height: 1;
       margin-bottom: 6px;
     }
-    .card-header p {
-      font-size: 13px;
-      color: var(--muted);
+    .card-header p { font-size: 13px; color: var(--muted); }
+    .accent-line {
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent) 0%, rgba(140,185,255,0.1) 100%);
+      border-radius: 2px;
+      margin-bottom: 32px;
+      width: 60px;
     }
-
     .counter-row {
       display: flex;
       align-items: center;
@@ -149,12 +143,9 @@
       border-radius: 6px;
       padding: 4px 10px;
       letter-spacing: 0.06em;
+      transition: all 0.3s;
     }
-    .counter-label {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
+    .counter-label { font-size: 12px; color: var(--muted); }
     textarea {
       width: 100%;
       background: var(--surface);
@@ -176,7 +167,6 @@
       box-shadow: 0 0 0 3px rgba(140,185,255,0.07);
     }
     textarea::placeholder { color: rgba(255,255,255,0.18); }
-
     .char-count {
       text-align: right;
       font-size: 11px;
@@ -184,7 +174,6 @@
       margin-top: 6px;
     }
     .char-count.warn { color: #ffaa5e; }
-
     .actions {
       display: flex;
       gap: 12px;
@@ -207,7 +196,6 @@
     .btn-submit:hover { opacity: 0.88; box-shadow: 0 4px 32px rgba(140,185,255,0.3); }
     .btn-submit:active { transform: scale(0.98); }
     .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
     .status-msg {
       margin-top: 16px;
       font-size: 13px;
@@ -218,21 +206,11 @@
       display: none;
     }
     .status-msg.show { display: block; }
-    .status-msg.ok   { background: rgba(140,185,255,0.1); color: var(--accent); border: 1px solid rgba(140,185,255,0.2); }
-    .status-msg.err  { background: rgba(255,100,100,0.08); color: #ff7b7b; border: 1px solid rgba(255,100,100,0.2); }
-
-    /* divider line like the banner */
-    .accent-line {
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent) 0%, rgba(140,185,255,0.1) 100%);
-      border-radius: 2px;
-      margin-bottom: 32px;
-      width: 60px;
-    }
+    .status-msg.ok { background: rgba(140,185,255,0.1); color: var(--accent); border: 1px solid rgba(140,185,255,0.2); }
+    .status-msg.err { background: rgba(255,100,100,0.08); color: #ff7b7b; border: 1px solid rgba(255,100,100,0.2); }
   </style>
 </head>
 <body>
-
   <nav>
     <a class="nav-logo" href="index.html">
       <img src="bhhsmsgs_logo.png" alt="logo">
@@ -243,73 +221,76 @@
       <button class="btn-ghost" onclick="logOut()">Log Out</button>
     </div>
   </nav>
-
+ 
   <main>
     <div class="submit-card">
       <div class="card-header">
         <h1>Submit a Message</h1>
         <div class="accent-line"></div>
-        <p>Approved messages are broadcast to Discord and pooled for the next community Reel.</p>
+        <p>Approved messages are broadcast to Discord and pooled for the next community post.</p>
       </div>
-
+ 
       <div class="counter-row">
         <span class="counter-badge" id="count-badge">— / 5</span>
-        <span class="counter-label">messages queued toward next Reel</span>
+        <span class="counter-label">messages queued toward next post</span>
       </div>
-
+ 
       <textarea id="message-input" placeholder="Say something to the community..." maxlength="280" oninput="updateCount()"></textarea>
       <p class="char-count" id="char-count">0 / 280</p>
-
+ 
       <div class="actions">
         <button class="btn-submit" id="submit-btn" onclick="submitMessage()">Submit</button>
       </div>
-
+ 
       <div class="status-msg" id="status-msg"></div>
     </div>
   </main>
-
+ 
   <script>
     const { createClient } = supabase;
     const sb = createClient('https://betegxuivbdklzasqywt.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJldGVneHVpdmJka2x6YXNxeXd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxOTY3MDIsImV4cCI6MjA5NTc3MjcwMn0.yTEZOhtfpB6Ifk5SF99ZBl-ETiPAaQ--XM3DZnQwG1A');
-
-    (async () => {
-      const { data: { session } } = await sb.auth.getSession();
-      if (!session) { window.location.href = 'index.html'; return; }
-      document.getElementById('user-email').textContent = session.user.email;
-    
+ 
+    async function updateCounter() {
       const { count } = await sb
         .from('messages')
         .select('*', { count: 'exact', head: true })
         .eq('moderation_status', 'approved')
         .eq('posted_to_insta', false);
-    
-      document.getElementById('count-badge').textContent = `${count ?? 0} / 5`;
+      const display = (count ?? 0) % 5;
+      document.getElementById('count-badge').textContent = `${display} / 5`;
+    }
+ 
+    (async () => {
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) { window.location.href = 'index.html'; return; }
+      document.getElementById('user-email').textContent = session.user.email;
+      await updateCounter();
     })();
-
+ 
     function updateCount() {
       const val = document.getElementById('message-input').value.length;
       const el  = document.getElementById('char-count');
       el.textContent = `${val} / 280`;
       el.className = 'char-count' + (val > 240 ? ' warn' : '');
     }
-
+ 
     function showStatus(text, type) {
       const el = document.getElementById('status-msg');
       el.textContent = text;
       el.className = 'status-msg show ' + type;
     }
-
+ 
     async function submitMessage() {
       const { data: { session } } = await sb.auth.getSession();
       if (!session) { window.location.href = 'index.html'; return; }
-
+ 
       const message = document.getElementById('message-input').value.trim();
       if (!message) { showStatus('Write something first.', 'err'); return; }
-
+ 
       const btn = document.getElementById('submit-btn');
       btn.disabled = true;
       btn.textContent = 'Sending...';
-
+ 
       try {
         const res = await fetch('https://bhhsmsgs-backend.onrender.com/submit', {
           method: 'POST',
@@ -321,6 +302,7 @@
           showStatus('✓ Message submitted and broadcast to Discord!', 'ok');
           document.getElementById('message-input').value = '';
           updateCount();
+          await updateCounter();
         } else {
           showStatus('Message did not pass moderation. Try rephrasing.', 'err');
         }
@@ -331,7 +313,7 @@
         btn.textContent = 'Submit';
       }
     }
-
+ 
     async function logOut() {
       await sb.auth.signOut();
       window.location.href = 'index.html';
