@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bhhsmsgs — Privacy Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080809;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --accent: #8cb9ff;
+      --text: #eef0f4;
+      --muted: rgba(238,240,244,0.42);
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 64px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,8,9,0.9); backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { width: 34px; height: 34px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255,255,255,0.2)); }
+    .nav-logo span { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: var(--text); }
+    .back-link {
+      font-size: 13px; color: var(--muted); text-decoration: none;
+      border: 1px solid var(--border); border-radius: 8px; padding: 7px 14px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .back-link:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+    .page { max-width: 680px; margin: 0 auto; padding: 56px 24px 80px; }
+
+    .page-header { margin-bottom: 48px; }
+    .page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 2px; line-height: 1; margin-bottom: 8px; }
+    .accent-line { height: 2px; background: linear-gradient(90deg, var(--accent) 0%, transparent 100%); border-radius: 2px; width: 48px; margin-bottom: 12px; }
+    .date-tag { font-size: 12px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .section { margin-bottom: 36px; }
+    .section h2 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1.5px;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section p { font-size: 15px; line-height: 1.75; color: rgba(238,240,244,0.8); }
+
+    .divider { height: 1px; background: var(--border); margin: 32px 0; }
+
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px 24px; margin-top: 12px;
+    }
+    .card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .card strong { color: var(--text); font-weight: 500; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="bhhsmsgs_logo.png" alt="logo">
+      <span>bhhsmsgs</span>
+    </a>
+    <a class="back-link" href="index.html">← Back to Login</a>
+  </nav>
+
+  <div class="page">
+    <div class="page-header">
+      <h1>Privacy Policy</h1>
+      <div class="accent-line"></div>
+      <span class="date-tag">Last updated: May 31, 2026</span>
+    </div>
+
+    <div class="section">
+      <h2>1. Information We Collect</h2>
+      <p>We collect your email address provided during sign-up for account authentication and communication purposes. We also store the messages you submit through our platform to manage and moderate community content.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>2. How We Use Your Information</h2>
+      <p>Your email is used to manage your account status and pending approvals. Submitted messages are processed by our system to ensure they meet community standards before being posted to our social media channels.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>3. Data Sharing</h2>
+      <p>We do not sell your personal data. We utilise third-party services to operate the platform:</p>
+      <div class="card" style="margin-top:16px;">
+        <p><strong>Supabase</strong> — authentication and database management.</p>
+      </div>
+      <div class="card">
+        <p><strong>Meta Graph API</strong> — facilitates posting of approved community content to Instagram.</p>
+      </div>
+      <div class="card">
+        <p><strong>Discord</strong> — approved messages are broadcast to our community server.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h2>4. Contact</h2>
+      <p>If you have any questions about this Privacy Policy, please contact the site administrator at <span style="color:var(--accent);">bhhsmsgs@gmail.com</span>.</p>
+    </div>
+  </div>
+
+</body>
+</html>
