@@ -276,6 +276,14 @@
       const { data: { session } } = await sb.auth.getSession();
       if (!session) { window.location.href = 'index.html'; return; }
       document.getElementById('user-email').textContent = session.user.email;
+    
+      const { count } = await sb
+        .from('messages')
+        .select('*', { count: 'exact', head: true })
+        .eq('moderation_status', 'approved')
+        .eq('posted_to_insta', false);
+    
+      document.getElementById('count-badge').textContent = `${count ?? 0} / 5`;
     })();
 
     function updateCount() {
